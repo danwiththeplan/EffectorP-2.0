@@ -61,7 +61,8 @@ def usage():
     print "options directing output:"
     print "-o <f> : direct output to file <f>, not stdout"
     print "-E <f> : save predicted effectors to FASTA file <f>"        
-    print "-N <f> : save predicted non-effectors to FASTA file <f>"        
+    print "-N <f> : save predicted non-effectors to FASTA file <f>"    
+    print "-O <f> : save pepstats and weka output to this folder <f>"    
     print
     print "# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
     print
@@ -91,8 +92,9 @@ def scan_arguments(commandline):
     output_file = None
     effector_output = None
     noneffector_output = None
+    subprogram_output = None
 
-    i_count, o_count, E_count, N_count, P_count = 0, 0, 0, 0, 0
+    i_count, o_count, E_count, N_count, P_count, O_count = 0, 0, 0, 0, 0, 0
    
     for opt, arg in opts:
         if opt in ("-o"):
@@ -109,6 +111,9 @@ def scan_arguments(commandline):
         elif opt in ("-N"):
             noneffector_output = arg
             N_count += 1
+        elif opt in ("-O"):
+            noneffector_output = arg
+            O_count += 1
         elif opt in ("-h", "--help"):
             usage()
         else:
@@ -117,7 +122,7 @@ def scan_arguments(commandline):
     if i_count > 1 or o_count > 1 or E_count > 1 or N_count > 1:
        usage()
 
-    return FASTA_FILE, short_format, output_file, effector_output, noneffector_output
+    return FASTA_FILE, short_format, output_file, effector_output, noneffector_output, subprogram_output
 # -----------------------------------------------------------------------------------------------------------
 models_bayes = ['/MODEL_FILES/PathogenSecretomes_Bayes/trainingdata_samegenomes_iteration25_ratio3_bayes.model',
                 '/MODEL_FILES/PathogenSecretomes_Bayes/trainingdata_samegenomes_iteration69_ratio3_bayes.model',
