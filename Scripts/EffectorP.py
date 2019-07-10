@@ -67,7 +67,7 @@ if __name__ == '__main__':
     commandline = sys.argv[1:]
     # -----------------------------------------------------------------------------------------------------------
     if commandline:
-        FASTA_FILE, short_format, output_file, effector_output, noneffector_output = functions.scan_arguments(commandline)
+        FASTA_FILE, short_format, output_file, effector_output, noneffector_output, subprogram_output = functions.scan_arguments(commandline)
 	# If no FASTA file was provided with the -i option
         if not FASTA_FILE:
             print
@@ -77,7 +77,7 @@ if __name__ == '__main__':
         functions.usage()
     # -----------------------------------------------------------------------------------------------------------
     # Temporary folder name identifier that will be used to store results
-    RESULTS_PATH = tempfile.mkdtemp() + '/'
+    RESULTS_PATH = subprogram_output
     # -----------------------------------------------------------------------------------------------------------
     # Check if FASTA file exists
     try:
@@ -299,8 +299,6 @@ if __name__ == '__main__':
                 f_output.writelines(sequence + '\n')  
     # -----------------------------------------------------------------------------------------------------------
     # -----------------------------------------------------------------------------------------------------------
-    # Clean up and delete temporary folder that was created
-    shutil.rmtree(RESULTS_PATH)
     # -----------------------------------------------------------------------------------------------------------
     try:
         sys.stdout.close()
