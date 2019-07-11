@@ -80,7 +80,7 @@ def scan_arguments(commandline):
         Return:   Parsed options.
     """
     try:
-        opts, args = getopt.getopt(commandline, "hso:E:N:i:O", ["help"])        
+        opts, args = getopt.getopt(commandline, "hso:E:N:i:O:", ["help"])        
     except getopt.GetoptError as err:
         # print help information and exit:
         print str(err) # will print something like "option -a not recognized"
