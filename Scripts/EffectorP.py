@@ -78,6 +78,7 @@ if __name__ == '__main__':
     # -----------------------------------------------------------------------------------------------------------
     # Temporary folder name identifier that will be used to store results
     RESULTS_PATH = subprogram_output
+    print "Your pepstats and WEKA outputs will be placed in " + RESULTS_PATH
     # -----------------------------------------------------------------------------------------------------------
     # Check if FASTA file exists
     try:
